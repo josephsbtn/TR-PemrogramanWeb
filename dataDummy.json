@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Conference Room A",
+    "capacity": 50,
+    "statusDipinjam": false,
+    "bookingsDate": "2024-10-02T10:00:00Z",
+    "imageUrl": ["https://example.com/images/conferenceA.jpg"],
+    "description": "Spacious conference room with projectors and whiteboard.",
+    "type": "Conference Room"
+  },
+  {
+    "name": "Lab Room B",
+    "capacity": 30,
+    "statusDipinjam": true,
+    "bookingsDate": "2024-10-03T14:00:00Z",
+    "imageUrl": ["https://example.com/images/labB.jpg"],
+    "description": "Fully equipped lab with computers and science equipment.",
+    "type": "Lab Room"
+  },
+  {
+    "name": "Meeting Room C",
+    "capacity": 15,
+    "statusDipinjam": false,
+    "bookingsDate": "2024-10-05T09:00:00Z",
+    "imageUrl": ["https://example.com/images/meetingC.jpg"],
+    "description": "Small meeting room ideal for team discussions.",
+    "type": "Meeting Room"
+  }
+]

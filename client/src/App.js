@@ -1,11 +1,10 @@
 import "./index.css";
+import Navbar from "./components/navbar.js";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-6xl text-red-500 font-bold text-[50px]">
-        Hello World
-      </h1>
+    <div className="App w-full">
+      <Navbar />
     </div>
   );
 }
