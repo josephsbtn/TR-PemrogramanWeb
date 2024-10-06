@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const Room = require("../models/room");
+const User = require("../models/users");
 
-router.get("/getallrooms", async (req, res) => {
+router.get("/getallusers", async (req, res) => {
   try {
-    const rooms = await Room.find({});
+    const rooms = await User.find({});
     res.send(rooms);
   } catch (error) {
     return res.status(400).json({ message: error.message });

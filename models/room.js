@@ -16,10 +16,6 @@ const roomSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
-    bookingsDate: {
-      type: Date,
-      required: true,
-    },
     imageUrl: [],
     description: {
       type: String,

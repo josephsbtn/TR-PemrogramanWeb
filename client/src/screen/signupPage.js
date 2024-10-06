@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function loginPage() {
+function signupPage() {
   return (
     <body className="bg-bgColor overflow-hidden w-full h-screen">
       <div id="logo" className="mt-8 ml-14">
@@ -37,9 +37,35 @@ function loginPage() {
       <div className="w-full flex justify-center items-center h-[78%]">
         <div className="mr-32 ml-10" id="form">
           <h1 className="font-montserrat text-[31px] font-semibold  underline decoration-myGrey text-myBlue my-4  ">
-            LOGIN
+            Sign Up
           </h1>
           <form action="" method="post" className="">
+            <label
+              htmlFor="FirstName"
+              id="FirstName"
+              className="font-montserrat">
+              First Name
+            </label>
+            <br />
+            <input
+              type="text"
+              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
+              name="FirstName"
+              id="FirstName"></input>
+            <br />
+            <label
+              htmlFor="LastName"
+              id="LastName"
+              className="font-montserrat mt-10">
+              Last Name
+            </label>
+            <br />
+            <input
+              type="text"
+              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
+              name="LastName"
+              id="LastName"></input>
+            <br />
             <label htmlFor="username" id="username" className="font-montserrat">
               Username
             </label>
@@ -62,9 +88,9 @@ function loginPage() {
               className=" border-b-2 border-black  text-myBlue w-[300px] h-9 focus:outline-none text-[18px]"></input>
             <br />
             <Link
-              to="/signup"
+              to="/login"
               className="text-myBlue font-montserrat hover:border-b-2 mt-5 hover:border-myBlue transition-all duration-100 text-[14px]">
-              New Account
+              Have an Account
             </Link>
             <br />
             <button
@@ -335,4 +361,4 @@ function loginPage() {
   );
 }
 
-export default loginPage;
+export default signupPage;

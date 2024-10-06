@@ -1,0 +1,26 @@
+[
+  {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password123",
+    "isAdmin": true,
+    "createdAt": "2023-10-05T12:34:56.000Z",
+    "updatedAt": "2023-10-05T12:34:56.000Z"
+  },
+  {
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "password": "password456",
+    "isAdmin": false,
+    "createdAt": "2023-10-05T12:34:56.000Z",
+    "updatedAt": "2023-10-05T12:34:56.000Z"
+  },
+  {
+    "name": "Alice Johnson",
+    "email": "alice@example.com",
+    "password": "password789",
+    "isAdmin": false,
+    "createdAt": "2023-10-05T12:34:56.000Z",
+    "updatedAt": "2023-10-05T12:34:56.000Z"
+  }
+]

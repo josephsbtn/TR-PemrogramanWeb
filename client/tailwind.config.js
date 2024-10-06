@@ -7,6 +7,7 @@ module.exports = {
         bgColor: "#",
         myBlue: "#274C77",
         myGrey: "#8B8C89",
+        anotherGrey: "#E7ECEF",
       },
       fontFamily: {
         montserrat: ["Montserrat", "system-ui"],
