@@ -40,6 +40,16 @@ function signupPage() {
             Sign Up
           </h1>
           <form action="" method="post" className="">
+            <label htmlFor="email" id="email" className="font-montserrat">
+              Email
+            </label>
+            <br />
+            <input
+              type="email"
+              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
+              name="email"
+              id="email"></input>
+            <br />
             <label
               htmlFor="FirstName"
               id="FirstName"

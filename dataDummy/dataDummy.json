@@ -1,26 +1,42 @@
 [
   {
     "name": "Conference Room A",
-    "capacity": 50,
-    "statusDipinjam": false,
-    "imageUrl": ["https://example.com/images/conferenceA.jpg"],
-    "description": "Spacious conference room with projectors and whiteboard.",
-    "type": "Conference Room"
-  },
-  {
-    "name": "Lab Room B",
     "capacity": 30,
-    "statusDipinjam": true,
-    "imageUrl": ["https://example.com/images/labB.jpg"],
-    "description": "Fully equipped lab with computers and science equipment.",
-    "type": "Lab Room"
+    "statusDipinjam": false,
+    "image": [
+      "https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/4/2017/10/Japanese-college-class-1024x683.jpg"
+    ],
+    "description": "A large conference room suitable for meetings and presentations.",
+    "type": "Conference"
   },
   {
-    "name": "Meeting Room C",
-    "capacity": 15,
+    "name": "Lecture Hall B",
+    "capacity": 100,
+    "statusDipinjam": true,
+    "image": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFnCB8Dk2lolFBytzdasJq6yRztmaJTV3Y6Q&s"
+    ],
+    "description": "Spacious lecture hall equipped with audio-visual systems.",
+    "type": "Lecture"
+  },
+  {
+    "name": "Study Room C",
+    "capacity": 20,
     "statusDipinjam": false,
-    "imageUrl": ["https://example.com/images/meetingC.jpg"],
-    "description": "Small meeting room ideal for team discussions.",
-    "type": "Meeting Room"
+    "image": [
+      "https://pro.sony/s3/2022/06/14084657/Tokyo_Uni_Of_Sci_Case_Study_Hero_Banner-1.jpg"
+    ],
+    "description": "A quiet study room ideal for small group discussions.",
+    "type": "Study"
+  },
+  {
+    "name": "Seminar Room D",
+    "capacity": 50,
+    "statusDipinjam": true,
+    "image": [
+      "https://upload.wikimedia.org/wikipedia/commons/8/86/Lecture_Room_64%2C_Engineering_Building_6%2C_the_University_of_Tokyo.jpg"
+    ],
+    "description": "A seminar room with a modern layout, great for workshops and seminars.",
+    "type": "Seminar"
   }
 ]

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function loginPage() {
+function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <body className="bg-bgColor overflow-hidden w-full h-screen">
       <div id="logo" className="mt-8 ml-14">
@@ -335,4 +337,4 @@ function loginPage() {
   );
 }
 
-export default loginPage;
+export default LoginPage;

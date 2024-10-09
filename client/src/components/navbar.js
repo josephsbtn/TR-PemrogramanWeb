@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function navbar() {
   return (
@@ -27,123 +28,137 @@ function navbar() {
             />
           </svg>
         </div>
-        <button className="border-y-2 border-white py-4 w-full mt-10">
-          <div className="flex justify-start mx-5 items-center">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 21 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12.2083 6.58334V0.333344H20.3333V6.58334H12.2083ZM0.333313 10.3333V0.333344H8.45831V10.3333H0.333313ZM12.2083 20.3333V10.3333H20.3333V20.3333H12.2083ZM0.333313 20.3333V14.0833H8.45831V20.3333H0.333313Z"
-                fill="white"
-              />
-            </svg>
-            <p className="text-white font-montserrat ml-10 text-start">
-              Dashboard
-            </p>
-          </div>
-        </button>
-        <button href="" className="border-b-2 border-white py-4 w-full ">
-          <div className="flex justify-start mx-5 items-center ">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M19.142 1.15961C19.634 1.20695 20 1.49095 20 1.8263V18.1735C20 18.5088 19.634 18.7928 19.142 18.8402L7.142 19.9935C6.99937 20.0069 6.8541 19.9995 6.7161 19.9721C6.57809 19.9446 6.45057 19.8976 6.34222 19.8344C6.23386 19.7711 6.14721 19.6931 6.08816 19.6055C6.02911 19.5179 5.99904 19.4229 6 19.3269V18.0001H1.052C0.773408 17.9996 0.506438 17.9257 0.30935 17.7944C0.112261 17.6631 0.00105516 17.4852 0 17.2995V2.70099C0 2.31431 0.473 1.99897 1.052 1.99897H6V0.672929C6 0.263582 6.539 -0.0510944 7.142 0.00690741L19.142 1.15961ZM9 10.6666C9.26522 10.6666 9.51957 10.5963 9.70711 10.4713C9.89464 10.3463 10 10.1767 10 9.99989C10 9.82308 9.89464 9.6535 9.70711 9.52847C9.51957 9.40345 9.26522 9.33321 9 9.33321C8.73478 9.33321 8.48043 9.40345 8.29289 9.52847C8.10536 9.6535 8 9.82308 8 9.99989C8 10.1767 8.10536 10.3463 8.29289 10.4713C8.48043 10.5963 8.73478 10.6666 9 10.6666ZM2 16.6668H6V3.33301H2V16.6668Z"
-                fill="white"
-              />
-            </svg>
-            <p className="text-white font-montserrat ml-10 text-start">
-              Room list
-            </p>
-          </div>
-        </button>
-        <button href="" className="border-b-2 border-white py-4 w-full ">
-          <div className="flex justify-start mx-5 items-center">
-            <svg
-              width="20"
-              viewBox="0 0 23 26"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M0 0H23V26H0V0ZM2.3 2.6V11.7H4.5977V11.6974H6.9023V11.7H20.7V2.6H2.3ZM20.7 14.3H6.9023V14.3026H4.5977V14.3H2.3V23.4H20.7V14.3ZM4.5977 5.85H6.9023V8.4552H4.5977V5.85ZM4.5977 17.55H6.9023V20.1552H4.5977V17.55Z"
-                fill="white"
-              />
-            </svg>
-            <p className="text-white font-montserrat ml-10 text-start">Data </p>
-          </div>
-        </button>
-        <button href="" className="border-b-2 border-white py-4 w-full ">
-          <div className="flex justify-start mx-5 items-center">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M17.5 14.5807V5.51724C17.5 3.99586 16.005 2.75862 14.1667 2.75862H10.69L12.845 0.975172L11.6667 0L7.5 3.44828L11.6667 6.89655L12.845 5.92138L10.69 4.13793H14.1667C15.0858 4.13793 15.8333 4.75724 15.8333 5.51724V14.5807C14.4 14.889 13.3333 15.96 13.3333 17.2414C13.3333 18.7628 14.8283 20 16.6667 20C18.505 20 20 18.7628 20 17.2414C20 15.96 18.9333 14.8897 17.5 14.5807ZM16.6667 18.6207C15.7475 18.6207 15 18.0021 15 17.2414C15 16.4807 15.7475 15.8621 16.6667 15.8621C17.5858 15.8621 18.3333 16.4814 18.3333 17.2414C18.3333 18.0014 17.5858 18.6207 16.6667 18.6207ZM0 3.44828C0 4.72966 1.06667 5.8 2.5 6.10897V14.5807C1.06667 14.889 0 15.96 0 17.2414C0 18.7628 1.495 20 3.33333 20C5.17167 20 6.66667 18.7628 6.66667 17.2414C6.66667 15.9593 5.6 14.8897 4.16667 14.5807V6.10897C5.6 5.80069 6.66667 4.72966 6.66667 3.44828C6.66667 1.9269 5.17167 0.689655 3.33333 0.689655C1.495 0.689655 0 1.9269 0 3.44828ZM5 17.2414C5 18.0021 4.2525 18.6207 3.33333 18.6207C2.41417 18.6207 1.66667 18.0021 1.66667 17.2414C1.66667 16.4807 2.41417 15.8621 3.33333 15.8621C4.2525 15.8621 5 16.4814 5 17.2414ZM5 3.44828C5 4.20897 4.2525 4.82759 3.33333 4.82759C2.41417 4.82759 1.66667 4.20897 1.66667 3.44828C1.66667 2.68759 2.41417 2.06897 3.33333 2.06897C4.2525 2.06897 5 2.68759 5 3.44828Z"
-                fill="white"
-              />
-            </svg>
-            <p className="text-white font-montserrat ml-10 text-start">
-              Request Peminjaman
-            </p>
-          </div>
-        </button>
-        <button href="" className="border-b-2 border-white py-4 w-full ">
-          <div className="flex justify-start mx-5 items-center ">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 30 30"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <g id="uis:calender">
+        <div className="border-y-2 border-white py-4 w-full mt-10">
+          <Link to={"/homeAdmin"}>
+            <div className="flex justify-start mx-5 items-center">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 21 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path
-                  id="Vector"
-                  d="M2.5 23.75C2.5 25.875 4.125 27.5 6.25 27.5H23.75C25.875 27.5 27.5 25.875 27.5 23.75V13.75H2.5V23.75ZM23.75 5H21.25V3.75C21.25 3 20.75 2.5 20 2.5C19.25 2.5 18.75 3 18.75 3.75V5H11.25V3.75C11.25 3 10.75 2.5 10 2.5C9.25 2.5 8.75 3 8.75 3.75V5H6.25C4.125 5 2.5 6.625 2.5 8.75V11.25H27.5V8.75C27.5 6.625 25.875 5 23.75 5Z"
+                  d="M12.2083 6.58334V0.333344H20.3333V6.58334H12.2083ZM0.333313 10.3333V0.333344H8.45831V10.3333H0.333313ZM12.2083 20.3333V10.3333H20.3333V20.3333H12.2083ZM0.333313 20.3333V14.0833H8.45831V20.3333H0.333313Z"
                   fill="white"
                 />
-              </g>
-            </svg>
-            <p className="text-white font-montserrat ml-10 text-start">
-              Calender
-            </p>
-          </div>
-        </button>
-        <button href="" className="border-b-2 border-white py-4 w-full ">
-          <div className="flex justify-start mx-5 items-center ">
-            <svg
-              width="20"
-              viewBox="0 0 31 33"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M18.0833 11V8.25C18.0833 7.52065 17.8112 6.82118 17.3267 6.30546C16.8422 5.78973 16.1851 5.5 15.5 5.5H6.45833C5.77319 5.5 5.11611 5.78973 4.63164 6.30546C4.14717 6.82118 3.875 7.52065 3.875 8.25V24.75C3.875 25.4793 4.14717 26.1788 4.63164 26.6945C5.11611 27.2103 5.77319 27.5 6.45833 27.5H15.5C16.1851 27.5 16.8422 27.2103 17.3267 26.6945C17.8112 26.1788 18.0833 25.4793 18.0833 24.75V22"
-                stroke="white"
-                stroke-width="3.33333"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M11.625 16.5H27.125M27.125 16.5L23.25 12.375M27.125 16.5L23.25 20.625"
-                stroke="white"
-                stroke-width="3.33333"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <p className="text-white font-montserrat ml-10 text-start">
-              Log Out
-            </p>
-          </div>
-        </button>
+              </svg>
+              <p className="text-white font-montserrat ml-10 text-start">
+                Dashboard
+              </p>
+            </div>
+          </Link>
+        </div>
+        <div className="border-b-2 border-white py-4 w-full ">
+          <Link to={"/roomList"}>
+            <div className="flex justify-start mx-5 items-center ">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19.142 1.15961C19.634 1.20695 20 1.49095 20 1.8263V18.1735C20 18.5088 19.634 18.7928 19.142 18.8402L7.142 19.9935C6.99937 20.0069 6.8541 19.9995 6.7161 19.9721C6.57809 19.9446 6.45057 19.8976 6.34222 19.8344C6.23386 19.7711 6.14721 19.6931 6.08816 19.6055C6.02911 19.5179 5.99904 19.4229 6 19.3269V18.0001H1.052C0.773408 17.9996 0.506438 17.9257 0.30935 17.7944C0.112261 17.6631 0.00105516 17.4852 0 17.2995V2.70099C0 2.31431 0.473 1.99897 1.052 1.99897H6V0.672929C6 0.263582 6.539 -0.0510944 7.142 0.00690741L19.142 1.15961ZM9 10.6666C9.26522 10.6666 9.51957 10.5963 9.70711 10.4713C9.89464 10.3463 10 10.1767 10 9.99989C10 9.82308 9.89464 9.6535 9.70711 9.52847C9.51957 9.40345 9.26522 9.33321 9 9.33321C8.73478 9.33321 8.48043 9.40345 8.29289 9.52847C8.10536 9.6535 8 9.82308 8 9.99989C8 10.1767 8.10536 10.3463 8.29289 10.4713C8.48043 10.5963 8.73478 10.6666 9 10.6666ZM2 16.6668H6V3.33301H2V16.6668Z"
+                  fill="white"
+                />
+              </svg>
+              <p className="text-white font-montserrat ml-10 text-start">
+                Room list
+              </p>
+            </div>
+          </Link>
+        </div>
+        <div className="border-b-2 border-white py-4 w-full ">
+          <Link to={"/bookingData"}>
+            <div className="flex justify-start mx-5 items-center">
+              <svg
+                width="20"
+                viewBox="0 0 23 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M0 0H23V26H0V0ZM2.3 2.6V11.7H4.5977V11.6974H6.9023V11.7H20.7V2.6H2.3ZM20.7 14.3H6.9023V14.3026H4.5977V14.3H2.3V23.4H20.7V14.3ZM4.5977 5.85H6.9023V8.4552H4.5977V5.85ZM4.5977 17.55H6.9023V20.1552H4.5977V17.55Z"
+                  fill="white"
+                />
+              </svg>
+              <p className="text-white font-montserrat ml-10 text-start">
+                Booking Data
+              </p>
+            </div>
+          </Link>
+        </div>
+        <div className="border-b-2 border-white py-4 w-full ">
+          <Link to={"/booking-request"}>
+            <div className="flex justify-start mx-5 items-center">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M17.5 14.5807V5.51724C17.5 3.99586 16.005 2.75862 14.1667 2.75862H10.69L12.845 0.975172L11.6667 0L7.5 3.44828L11.6667 6.89655L12.845 5.92138L10.69 4.13793H14.1667C15.0858 4.13793 15.8333 4.75724 15.8333 5.51724V14.5807C14.4 14.889 13.3333 15.96 13.3333 17.2414C13.3333 18.7628 14.8283 20 16.6667 20C18.505 20 20 18.7628 20 17.2414C20 15.96 18.9333 14.8897 17.5 14.5807ZM16.6667 18.6207C15.7475 18.6207 15 18.0021 15 17.2414C15 16.4807 15.7475 15.8621 16.6667 15.8621C17.5858 15.8621 18.3333 16.4814 18.3333 17.2414C18.3333 18.0014 17.5858 18.6207 16.6667 18.6207ZM0 3.44828C0 4.72966 1.06667 5.8 2.5 6.10897V14.5807C1.06667 14.889 0 15.96 0 17.2414C0 18.7628 1.495 20 3.33333 20C5.17167 20 6.66667 18.7628 6.66667 17.2414C6.66667 15.9593 5.6 14.8897 4.16667 14.5807V6.10897C5.6 5.80069 6.66667 4.72966 6.66667 3.44828C6.66667 1.9269 5.17167 0.689655 3.33333 0.689655C1.495 0.689655 0 1.9269 0 3.44828ZM5 17.2414C5 18.0021 4.2525 18.6207 3.33333 18.6207C2.41417 18.6207 1.66667 18.0021 1.66667 17.2414C1.66667 16.4807 2.41417 15.8621 3.33333 15.8621C4.2525 15.8621 5 16.4807 5 17.2414Z"
+                  fill="white"
+                />
+              </svg>
+              <p className="text-white font-montserrat ml-10 text-start">
+                Booking Request
+              </p>
+            </div>
+          </Link>
+        </div>
+        <div className="border-b-2 border-white py-4 w-full">
+          <Link href="">
+            <div className="flex justify-start mx-5 items-center ">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g id="uis:calender">
+                  <path
+                    id="Vector"
+                    d="M2.5 23.75C2.5 25.875 4.125 27.5 6.25 27.5H23.75C25.875 27.5 27.5 25.875 27.5 23.75V13.75H2.5V23.75ZM23.75 5H21.25V3.75C21.25 3 20.75 2.5 20 2.5C19.25 2.5 18.75 3 18.75 3.75V5H11.25V3.75C11.25 3 10.75 2.5 10 2.5C9.25 2.5 8.75 3 8.75 3.75V5H6.25C4.125 5 2.5 6.625 2.5 8.75V11.25H27.5V8.75C27.5 6.625 25.875 5 23.75 5Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+              <p className="text-white font-montserrat ml-10 text-start">
+                Calender
+              </p>
+            </div>
+          </Link>
+        </div>
+        <div className="border-b-2 border-white py-4 w-full ">
+          <Link href="">
+            <div className="flex justify-start mx-5 items-center ">
+              <svg
+                width="20"
+                viewBox="0 0 31 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M18.0833 11V8.25C18.0833 7.52065 17.8112 6.82118 17.3267 6.30546C16.8422 5.78973 16.1851 5.5 15.5 5.5H6.45833C5.77319 5.5 5.11611 5.78973 4.63164 6.30546C4.14717 6.82118 3.875 7.52065 3.875 8.25V24.75C3.875 25.4793 4.14717 26.1788 4.63164 26.6945C5.11611 27.2103 5.77319 27.5 6.45833 27.5H15.5C16.1851 27.5 16.8422 27.2103 17.3267 26.6945C17.8112 26.1788 18.0833 25.4793 18.0833 24.75V22"
+                  stroke="white"
+                  stroke-width="3.33333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11.625 16.5H27.125M27.125 16.5L23.25 12.375M27.125 16.5L23.25 20.625"
+                  stroke="white"
+                  stroke-width="3.33333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <p className="text-white font-montserrat ml-10 text-start">
+                Log Out
+              </p>
+            </div>
+          </Link>
+        </div>
       </div>
     </>
   );

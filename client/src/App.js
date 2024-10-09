@@ -2,6 +2,7 @@ import "./index.css";
 import Login from "./screen/loginPage.js";
 import Signup from "./screen/signupPage.js";
 import Homescreen from "./screen/homePage.js";
+import RoomList from "./screen/roomList.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -9,9 +10,10 @@ function App() {
     <div className="App w-full">
       <BrowserRouter>
         <Routes>
-          <Route path="/homeAdmin" element={<Homescreen />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/homeAdmin" exact Component={Homescreen} />
+          <Route path="/" exact Component={Login} />
+          <Route path="/signup" exact Component={Signup} />
+          <Route path="/roomList" exact Component={RoomList} />
         </Routes>
       </BrowserRouter>
     </div>

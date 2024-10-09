@@ -1,6 +1,4 @@
-const { timeStamp } = require("console");
 const mongoose = require("mongoose");
-const { type } = require("os");
 
 const roomSchema = new mongoose.Schema(
   {
@@ -16,7 +14,7 @@ const roomSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
-    imageUrl: [],
+    image: [],
     description: {
       type: String,
     },
@@ -25,7 +23,7 @@ const roomSchema = new mongoose.Schema(
     },
   },
   {
-    timeStamp: true,
+    timestamps: true,
   }
 );
 
