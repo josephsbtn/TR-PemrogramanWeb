@@ -47,11 +47,29 @@ function HomePage() {
           <div className="flex justify-end p-9 h-full">
             {/* dynamic content */}
             <div className="flex w-[80%] h-[30%] justify-around items-center">
-              <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border bg-white rounded-3xl">
-                <h1 className="text-lg font-montserrat font-bold">
-                  Room Count
+              <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border bg-white rounded-3xl shadow-md">
+                <div className=" flex justify-center items-center p-3 rounded-2xl m-2 bg-myGrey">
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g id="fluent-mdl2:room">
+                      <path
+                        id="Vector"
+                        d="M37.5 2.5V35H28.8672L19.6289 36.8555L15 37.7734V15.2148L27.5 12.7148V12.5H12.5V35H2.5V2.5H37.5ZM17.5 17.2852V34.7266L27.5 32.7148V15.2734L17.5 17.2852ZM35 32.5V5H5V32.5H10V10H30V32.5H35Z"
+                        fill="white"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <h1 className="text-sm font-montserrat font-medium ">
+                  Rooms Count
                 </h1>
-                <h1>{rooms.length}</h1>
+                <h1 className="text-2xl font-montserrat font-bold text-myBlue border-b-2 px-2 border-myGrey">
+                  {rooms.length}
+                </h1>
               </div>
               <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border bg-white rounded-3xl shadow-md">
                 <div className=" flex justify-center items-center p-3 rounded-2xl m-2 bg-myGrey">

@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function signupPage() {
+function SignupPage() {
+  const [FirstName, setFirstName] = useState("");
+  const [LastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <body className="bg-bgColor overflow-hidden w-full h-screen">
       <div id="logo" className="mt-8 ml-14">
@@ -48,7 +53,9 @@ function signupPage() {
               type="email"
               className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
               name="email"
-              id="email"></input>
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}></input>
             <br />
             <label
               htmlFor="FirstName"
@@ -61,7 +68,8 @@ function signupPage() {
               type="text"
               className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
               name="FirstName"
-              id="FirstName"></input>
+              id="FirstName"
+              onChange={(e) => setFirstName(e.target.value)}></input>
             <br />
             <label
               htmlFor="LastName"
@@ -74,7 +82,8 @@ function signupPage() {
               type="text"
               className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
               name="LastName"
-              id="LastName"></input>
+              id="LastName"
+              onChange={(e) => setLastName(e.target.value)}></input>
             <br />
             <label htmlFor="username" id="username" className="font-montserrat">
               Username
@@ -84,7 +93,8 @@ function signupPage() {
               type="text"
               className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
               name="username"
-              id="username"></input>
+              id="username"
+              onChange={(e) => setUsername(e.target.value)}></input>
             <br />
             <label
               htmlFor="password"
@@ -95,7 +105,10 @@ function signupPage() {
             <br />
             <input
               type="password"
-              className=" border-b-2 border-black  text-myBlue w-[300px] h-9 focus:outline-none text-[18px]"></input>
+              name="password"
+              id="password"
+              className=" border-b-2 border-black  text-myBlue w-[300px] h-9 focus:outline-none text-[18px]"
+              onChange={(e) => setPassword(e.target.value)}></input>
             <br />
             <Link
               to="/login"
@@ -371,4 +384,4 @@ function signupPage() {
   );
 }
 
-export default signupPage;
+export default SignupPage;
