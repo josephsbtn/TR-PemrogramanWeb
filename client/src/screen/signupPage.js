@@ -2,11 +2,24 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function SignupPage() {
-  const [FirstName, setFirstName] = useState("");
-  const [LastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  function signup() {
+    const user = {
+      firstName,
+      lastName,
+      email,
+      username,
+      password,
+    };
+
+    console.log(user);
+  }
+
   return (
     <body className="bg-bgColor overflow-hidden w-full h-screen">
       <div id="logo" className="mt-8 ml-14">
@@ -44,85 +57,85 @@ function SignupPage() {
           <h1 className="font-montserrat text-[31px] font-semibold  underline decoration-myGrey text-myBlue my-4  ">
             Sign Up
           </h1>
-          <form action="" method="post" className="">
-            <label htmlFor="email" id="email" className="font-montserrat">
-              Email
-            </label>
-            <br />
-            <input
-              type="email"
-              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
-              name="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}></input>
-            <br />
-            <label
-              htmlFor="FirstName"
-              id="FirstName"
-              className="font-montserrat">
-              First Name
-            </label>
-            <br />
-            <input
-              type="text"
-              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
-              name="FirstName"
-              id="FirstName"
-              onChange={(e) => setFirstName(e.target.value)}></input>
-            <br />
-            <label
-              htmlFor="LastName"
-              id="LastName"
-              className="font-montserrat mt-10">
-              Last Name
-            </label>
-            <br />
-            <input
-              type="text"
-              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
-              name="LastName"
-              id="LastName"
-              onChange={(e) => setLastName(e.target.value)}></input>
-            <br />
-            <label htmlFor="username" id="username" className="font-montserrat">
-              Username
-            </label>
-            <br />
-            <input
-              type="text"
-              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
-              name="username"
-              id="username"
-              onChange={(e) => setUsername(e.target.value)}></input>
-            <br />
-            <label
-              htmlFor="password"
-              id="password"
-              className="font-montserrat mt-10">
-              Password
-            </label>
-            <br />
-            <input
-              type="password"
-              name="password"
-              id="password"
-              className=" border-b-2 border-black  text-myBlue w-[300px] h-9 focus:outline-none text-[18px]"
-              onChange={(e) => setPassword(e.target.value)}></input>
-            <br />
-            <Link
-              to="/login"
-              className="text-myBlue font-montserrat hover:border-b-2 mt-5 hover:border-myBlue transition-all duration-100 text-[14px]">
-              Have an Account
-            </Link>
-            <br />
-            <button
-              type="submit"
-              className="text-myBlue font-montserrat font-bold px-32 border rounded-lg py-2 mt-7 border-black hover:bg-myGrey hover:text-white transition-all duration-200
-                text-[15px]">
-              Login
-            </button>
-          </form>
+          <label htmlFor="email" id="email" className="font-montserrat">
+            Email
+          </label>
+          <br />
+          <input
+            type="email"
+            className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
+            name="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}></input>
+          <br />
+          <label htmlFor="FirstName" id="FirstName" className="font-montserrat">
+            First Name
+          </label>
+          <br />
+          <input
+            type="text"
+            className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
+            name="FirstName"
+            id="FirstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}></input>
+          <br />
+          <label
+            htmlFor="LastName"
+            id="LastName"
+            className="font-montserrat mt-10">
+            Last Name
+          </label>
+          <br />
+          <input
+            type="text"
+            className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
+            name="LastName"
+            id="LastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}></input>
+          <br />
+          <label htmlFor="username" id="username" className="font-montserrat">
+            Username
+          </label>
+          <br />
+          <input
+            type="text"
+            className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
+            name="username"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}></input>
+          <br />
+          <label
+            htmlFor="password"
+            id="password"
+            className="font-montserrat mt-10">
+            Password
+          </label>
+          <br />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            className=" border-b-2 border-black  text-myBlue w-[300px] h-9 focus:outline-none text-[18px]"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}></input>
+          <br />
+          <Link
+            to="/login"
+            className="text-myBlue font-montserrat hover:border-b-2 mt-5 hover:border-myBlue transition-all duration-100 text-[14px]">
+            Have an Account
+          </Link>
+          <br />
+          <button
+            type="submit"
+            className="text-myBlue font-montserrat font-bold px-32 border rounded-lg py-2 mt-7 border-black hover:bg-myGrey hover:text-white transition-all duration-200
+                text-[15px]"
+            onClick={signup}>
+            Login
+          </button>
         </div>
         <svg
           width="762"
