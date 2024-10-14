@@ -12,30 +12,32 @@ router.get("/getallusers", async (req, res) => {
   }
 });
 
-router.post("/regisUser", async (req, res) => {
-  const newUser = new User({
-    username: req.body.username,
+router.post("/register", async (req, res) => {
+  const newuser = new User({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
+    username: req.body.username,
     email: req.body.email,
     password: req.body.password,
+    isAdmin: req.body.isAdmin,
   });
   try {
-    const user = await newUser.save();
-    res.send("Regis Succesfull");
+    const user = await newuser.save();
+    res.send("User Registered Successfully");
   } catch (error) {
     return res.status(400).json({ error });
   }
 });
 
-router.post("/loginUser", async (req, res) => {
+router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   try {
     const user = await User.findOne({ username: username, password: password });
+
     if (user) {
       res.send(user);
     } else {
-      return res.status(400).json({ message: "Login Error" });
+      return res.status(400).json({ message: "Login Failed" });
     }
   } catch (error) {
     return res.status(400).json({ error });

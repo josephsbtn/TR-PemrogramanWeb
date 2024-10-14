@@ -1,28 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import axios from "axios";
 
-function SignupPage() {
+const SignupForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  function signup() {
-    const user = {
-      firstName,
-      lastName,
-      email,
-      username,
-      password,
-    };
+  const signup = async (e) => {
+    e.preventDefault(); // Prevent page refresh
+    const user = { firstName, lastName, email, username, password };
 
-    console.log(user);
-  }
+    try {
+      const result = await axios.post("/api/users/register", user);
+      console.log(result.data);
+      setSuccess("Signup successful!");
+      setError(""); // Clear any previous errors
+    } catch (error) {
+      console.error(error);
+      setError("Signup failed. Please try again.");
+      setSuccess(""); // Clear any previous successes
+    }
+  };
 
   return (
-    <body className="bg-bgColor overflow-hidden w-full h-screen">
-      <div id="logo" className="mt-8 ml-14">
+    <div className="bg-bgColor overflow-hidden w-full h-screen">
+      <div className="mt-8 ml-14">
         <svg
           width="237"
           height="77"
@@ -54,88 +60,73 @@ function SignupPage() {
       </div>
       <div className="w-full flex justify-center items-center h-[78%]">
         <div className="mr-32 ml-10" id="form">
-          <h1 className="font-montserrat text-[31px] font-semibold  underline decoration-myGrey text-myBlue my-4  ">
+          <h1 className="font-montserrat text-[31px] font-semibold underline decoration-myGrey text-myBlue my-4">
             Sign Up
           </h1>
-          <label htmlFor="email" id="email" className="font-montserrat">
-            Email
-          </label>
-          <br />
-          <input
-            type="email"
-            className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
-            name="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}></input>
-          <br />
-          <label htmlFor="FirstName" id="FirstName" className="font-montserrat">
-            First Name
-          </label>
-          <br />
-          <input
-            type="text"
-            className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
-            name="FirstName"
-            id="FirstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}></input>
-          <br />
-          <label
-            htmlFor="LastName"
-            id="LastName"
-            className="font-montserrat mt-10">
-            Last Name
-          </label>
-          <br />
-          <input
-            type="text"
-            className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
-            name="LastName"
-            id="LastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}></input>
-          <br />
-          <label htmlFor="username" id="username" className="font-montserrat">
-            Username
-          </label>
-          <br />
-          <input
-            type="text"
-            className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px] "
-            name="username"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}></input>
-          <br />
-          <label
-            htmlFor="password"
-            id="password"
-            className="font-montserrat mt-10">
-            Password
-          </label>
-          <br />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className=" border-b-2 border-black  text-myBlue w-[300px] h-9 focus:outline-none text-[18px]"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}></input>
-          <br />
-          <Link
-            to="/login"
-            className="text-myBlue font-montserrat hover:border-b-2 mt-5 hover:border-myBlue transition-all duration-100 text-[14px]">
-            Have an Account
-          </Link>
-          <br />
-          <button
-            type="submit"
-            className="text-myBlue font-montserrat font-bold px-32 border rounded-lg py-2 mt-7 border-black hover:bg-myGrey hover:text-white transition-all duration-200
-                text-[15px]"
-            onClick={signup}>
-            Login
-          </button>
+          <form onSubmit={signup}>
+            <label htmlFor="email" className="font-montserrat">
+              Email
+            </label>
+            <br />
+            <input
+              type="email"
+              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px]"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <label htmlFor="firstName" className="font-montserrat">
+              First Name
+            </label>
+            <br />
+            <input
+              type="text"
+              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px]"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <br />
+            <label htmlFor="lastName" className="font-montserrat">
+              Last Name
+            </label>
+            <br />
+            <input
+              type="text"
+              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px]"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            <br />
+            <label htmlFor="username" className="font-montserrat">
+              Username
+            </label>
+            <br />
+            <input
+              type="text"
+              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px]"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <br />
+            <label htmlFor="password" className="font-montserrat">
+              Password
+            </label>
+            <br />
+            <input
+              type="password"
+              className="border-b-2 border-black rounded-sm text-myBlue h-9 w-[300px] mb-5 focus:outline-none text-[18px]"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+            <button
+              type="submit"
+              className="bg-myBlue text-white py-2 px-4 rounded">
+              Sign Up
+            </button>
+            {error && <p className="text-red-500">{error}</p>}
+            {success && <p className="text-green-500">{success}</p>}
+          </form>
         </div>
         <svg
           width="762"
@@ -393,8 +384,8 @@ function SignupPage() {
           </defs>
         </svg>
       </div>
-    </body>
+    </div>
   );
-}
+};
 
-export default SignupPage;
+export default SignupForm;

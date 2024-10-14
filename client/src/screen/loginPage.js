@@ -5,6 +5,10 @@ function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  async function login() {
+    
+  }
+
   return (
     <body className="bg-bgColor overflow-hidden w-full h-screen">
       <div id="logo" className="mt-8 ml-14">
