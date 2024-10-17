@@ -1,13 +1,35 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  async function login() {
-    
-  }
+  const login = async (e) => {
+    e.preventDefault(); // Prevent page refresh
+    const user = { username, password };
+
+    try {
+      const result = await axios.post("/api/users/login", user);
+      localStorage.setItem("currentUser", JSON.stringify(result.data));
+      console.log(result.data);
+
+      if (result.data.isAdmin) {
+        window.location.href = "/homeAdmin";
+      } else {
+        window.location.href = "/homeUser";
+      }
+      setSuccess("Login successful!");
+      setError(""); // Clear any previous errors
+    } catch (error) {
+      console.error(error);
+      setError("Login failed. Please try again.");
+      setSuccess(""); // Clear any previous successes
+    }
+  };
 
   return (
     <body className="bg-bgColor overflow-hidden w-full h-screen">
@@ -46,7 +68,7 @@ function LoginPage() {
           <h1 className="font-montserrat text-[31px] font-semibold  underline decoration-myGrey text-myBlue my-4  ">
             LOGIN
           </h1>
-          <form action="" method="post" className="">
+          <form onSubmit={login} method="post" className="">
             <label htmlFor="username" id="username" className="font-montserrat">
               Username
             </label>
@@ -81,10 +103,19 @@ function LoginPage() {
             <br />
             <button
               type="submit"
-              className="text-myBlue font-montserrat font-bold px-32 border rounded-lg py-2 mt-7 border-black hover:bg-myGrey hover:text-white transition-all duration-200
-                text-[15px]">
+              className="bg-myBlue text-white py-2 px-32 border rounded-lg mt-7 border-black hover:bg-myGrey hover:text-white transition-all duration-200 text-[15px]">
               Login
             </button>
+            {error && (
+              <p className="text-red-500 font-montserrat p-2 font-medium">
+                {error}
+              </p>
+            )}
+            {success && (
+              <p className="text-green-500 font-montserrat p-2 font-medium">
+                {success}
+              </p>
+            )}
           </form>
         </div>
         <svg

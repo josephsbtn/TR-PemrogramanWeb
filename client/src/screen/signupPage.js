@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const SignupForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -119,6 +120,9 @@ const SignupForm = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <br />
+            <Link to={"/"}>
+              <h1> Have an Account</h1>
+            </Link>
             <button
               type="submit"
               className="bg-myBlue text-white py-2 px-4 rounded">

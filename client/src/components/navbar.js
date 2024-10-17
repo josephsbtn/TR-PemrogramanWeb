@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function navbar() {
+  function logout() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "/";
+  }
+
   return (
     <>
       <div className="w-[20%] h-screen bg-myBlue place-items-start fixed">
@@ -131,7 +136,7 @@ function navbar() {
           </Link>
         </div>
         <div className="border-b-2 border-white py-4 w-full ">
-          <Link href="">
+          <button onClick={logout} href="">
             <div className="flex justify-start mx-5 items-center ">
               <svg
                 width="20"
@@ -157,7 +162,7 @@ function navbar() {
                 Log Out
               </p>
             </div>
-          </Link>
+          </button>
         </div>
       </div>
     </>

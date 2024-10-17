@@ -35,6 +35,14 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ username: username, password: password });
 
     if (user) {
+      const tempUser = {
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        _id: user._id,
+      };
       res.send(user);
     } else {
       return res.status(400).json({ message: "Login Failed" });

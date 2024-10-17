@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
+import Topnav from "../components/topnav";
 import axios from "axios";
 
 function HomePage() {
@@ -34,20 +35,17 @@ function HomePage() {
   return (
     <>
       <section className="flex h-screen w-full bg-anotherGrey ">
-        <Navbar />
+        <nav className="h-screen w-[25%]">
+          <Navbar />
+        </nav>
 
-        <div className="flex flex-col w-full">
-          <nav className="flex justify-end items-center h-[10%] bg-white w-full px-4 py-2">
-            <div className="flex flex-col">
-              <h1 className="text-black text-lg">Unknown User</h1>
-              <h5 className="text-black text-xs">Status</h5>
-            </div>
-          </nav>
+        <div className="w-full flex flex-col items-center">
+          <Topnav />
 
-          <div className="flex justify-end p-9 h-full">
+          <div className="flex justify-center my-9 w-full">
             {/* dynamic content */}
-            <div className="flex w-[80%] h-[30%] justify-around items-center">
-              <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border bg-white rounded-3xl shadow-md">
+            <div className="flex w-[80%] h-fit justify-around items-center">
+              <div className="flex flex-col justify-center items-center w-[20%] h-[100%] p-2 border bg-white rounded-3xl shadow-md">
                 <div className=" flex justify-center items-center p-3 rounded-2xl m-2 bg-myGrey">
                   <svg
                     width="40"
@@ -71,7 +69,7 @@ function HomePage() {
                   {rooms.length}
                 </h1>
               </div>
-              <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border bg-white rounded-3xl shadow-md">
+              <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border p-2 bg-white rounded-3xl shadow-md">
                 <div className=" flex justify-center items-center p-3 rounded-2xl m-2 bg-myGrey">
                   <svg
                     width="40"
@@ -95,9 +93,10 @@ function HomePage() {
                   {users.length}
                 </h1>
               </div>
-              <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border bg-white rounded-3xl"></div>
+              <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border p-2 bg-white rounded-3xl"></div>
             </div>
           </div>
+          <div className="w-[90%] h-[20%] py-4 bg-white flex "></div>
         </div>
       </section>
     </>
