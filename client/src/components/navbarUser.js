@@ -71,7 +71,7 @@ function navbarUser() {
                 />
               </svg>
               <p className="text-white font-montserrat ml-10 text-start">
-                Room list
+                Pinjam Ruangan
               </p>
             </div>
           </Link>
@@ -91,7 +91,7 @@ function navbarUser() {
                 />
               </svg>
               <p className="text-white font-montserrat ml-10 text-start">
-                Booking Data
+                Peminjaman Saya
               </p>
             </div>
           </Link>
@@ -112,7 +112,7 @@ function navbarUser() {
                 />
               </svg>
               <p className="text-white font-montserrat ml-10 text-start">
-                Booking Request
+                Lainnya
               </p>
             </div>
           </Link>
@@ -136,7 +136,7 @@ function navbarUser() {
                 </g>
               </svg>
               <p className="text-white font-montserrat ml-10 text-start">
-                Calender
+                Log Out
               </p>
             </div>
           </Link>
