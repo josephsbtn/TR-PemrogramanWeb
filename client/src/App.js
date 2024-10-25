@@ -5,6 +5,7 @@ import Homescreen from "./screen/homePage.js";
 import RoomList from "./screen/roomList.js";
 import Homeuser from "./screen/userHome.js";
 import pinjamRuang from "./screen/pinjamRuang.js";
+import BookingsPage from "./screen/bookingsPage.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/roomList" exact Component={RoomList} />
           <Route path="/homeUser" exact Component={Homeuser} />
           <Route path="/pinjamRuang" exact Component={pinjamRuang} />
+          <Route path="/booking" exact Component={BookingsPage} />
         </Routes>
       </BrowserRouter>
     </div>

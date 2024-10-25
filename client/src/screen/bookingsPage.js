@@ -12,7 +12,9 @@ function BookingsPage({ match }) {
       try {
         setLoading(true);
         const { data } = (
-          await axios.get("/api/rooms/getallrooms", { roomid: match.params.id })
+          await axios.get("/api/rooms/getroombyId", {
+            roomid: match.params.id,
+          })
         ).data;
         console.log("data:", data);
         setRooms(data);
@@ -35,7 +37,7 @@ function BookingsPage({ match }) {
       ) : error ? (
         <p>Something went wrong, please try again later.</p>
       ) : (
-        <div>
+        <div className="">
           {rooms.length > 0 ? (
             rooms.map((room) => (
               <div key={room._id}>
