@@ -9,7 +9,7 @@ function RoomList() {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  
+
   useEffect(() => {
     const fetchRooms = async () => {
       try {

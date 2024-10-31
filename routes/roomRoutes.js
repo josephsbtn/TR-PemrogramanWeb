@@ -12,7 +12,7 @@ router.get("/getallrooms", async (req, res) => {
   }
 });
 
-router.post("/getallrooms", async (req, res) => {
+router.post("/getallroomsID", async (req, res) => {
   try {
     const { roomid } = req.body; // Get roomid from the request body
     let rooms;
