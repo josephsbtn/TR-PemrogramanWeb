@@ -6,6 +6,7 @@ import RoomList from "./screen/roomList.js";
 import Homeuser from "./screen/userHome.js";
 import pinjamRuang from "./screen/pinjamRuang.js";
 import BookingsPage from "./screen/bookingsPage.js";
+import Addroom from "./screen/addroom.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/homeUser" exact Component={Homeuser} />
           <Route path="/pinjamRuang" exact Component={pinjamRuang} />
           <Route path="/booking" exact Component={BookingsPage} />
+          <Route path="/addroom" exact Component={Addroom} />
         </Routes>
       </BrowserRouter>
     </div>
