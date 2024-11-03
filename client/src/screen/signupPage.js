@@ -35,7 +35,8 @@ const SignupForm = () => {
           height="77"
           viewBox="0 0 237 77"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg">
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <g id="Group 5">
             <path id="Rectangle 2" d="M57 48H225V52H57V48Z" fill="#8B8C89" />
             <path
@@ -125,7 +126,8 @@ const SignupForm = () => {
             </Link>
             <button
               type="submit"
-              className="bg-myBlue text-white py-2 px-4 rounded">
+              className="bg-myBlue text-white py-2 px-4 rounded"
+            >
               Sign Up
             </button>
             {error && <p className="text-red-500">{error}</p>}
@@ -137,7 +139,8 @@ const SignupForm = () => {
           height="440"
           viewBox="0 0 762 440"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg">
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <g clip-path="url(#clip0_15_2)">
             <path
               d="M246.097 428.989C365.637 428.989 462.543 332.956 462.543 214.494C462.543 96.0324 365.637 0 246.097 0C126.557 0 29.6508 96.0324 29.6508 214.494C29.6508 332.956 126.557 428.989 246.097 428.989Z"
