@@ -3,9 +3,9 @@ import Room from "../components/room";
 import React, { useEffect, useState } from "react";
 
 function BookingsPage({ match }) {
-  const [rooms, setRooms] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [rooms, setRooms] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
 
   useEffect(() => {
     const fetchRooms = async () => {

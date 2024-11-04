@@ -7,6 +7,7 @@ import Homeuser from "./screen/userHome.js";
 import pinjamRuang from "./screen/pinjamRuang.js";
 import BookingsPage from "./screen/bookingsPage.js";
 import Addroom from "./screen/addroom.js";
+import EditRoom from "./screen/editRoom.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -20,8 +21,9 @@ function App() {
           <Route path="/roomList" exact Component={RoomList} />
           <Route path="/homeUser" exact Component={Homeuser} />
           <Route path="/pinjamRuang" exact Component={pinjamRuang} />
-          <Route path="/booking" exact Component={BookingsPage} />
+          <Route path="/booking/:roomid" exact Component={BookingsPage} />
           <Route path="/addroom" exact Component={Addroom} />
+          <Route path="/editroom/:roomid" exact Component={EditRoom} />
         </Routes>
       </BrowserRouter>
     </div>

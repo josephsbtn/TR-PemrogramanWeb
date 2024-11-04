@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import Topnav from "../components/topnav";
+import Room from "../components/room";
+import Loading from "../components/loadingSpinner";
 import axios from "axios";
 
 function HomePage() {
-  const [rooms, SetRooms] = useState([]);
+  const [rooms, setRooms] = useState([]);
   const [users, SetUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchRooms = async () => {
       try {
+        setLoading(true);
         const data = (await axios.get("/api/rooms/getallrooms")).data;
         console.log("data :", data);
-        SetRooms(data);
+        setRooms(data);
+        setLoading(false);
       } catch (error) {
+        setError(true);
         console.log(error);
+        setLoading(false);
       }
     };
 
@@ -96,7 +104,25 @@ function HomePage() {
               <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border p-2 bg-white rounded-3xl"></div>
             </div>
           </div>
-          <div className="w-[90%] h-[20%] py-4 bg-white flex "></div>
+          <div className="w-[90%] h-[20%] py-4 bg-white flex ">
+            {loading ? (
+              <Loading />
+            ) : error ? (
+              <h1 className="text-center w-full">Error</h1>
+            ) : (
+              <div className="grid grid-cols-3 w-full h-screen justify-center items-center">
+                {rooms
+                  .filter((room) => room.statusDipinjam === false)
+                  .map((room) => (
+                    <div
+                      key={room.id}
+                      className="bg-white shadow-md shadow-myGrey rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
+                      <Room room={room} />
+                    </div>
+                  ))}
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </>

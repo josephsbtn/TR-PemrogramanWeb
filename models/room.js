@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const roomSchema = new mongoose.Schema(
   {
-    name: {
+    roomName: {
       type: String,
       required: true,
     },
@@ -13,13 +13,16 @@ const roomSchema = new mongoose.Schema(
     statusDipinjam: {
       type: Boolean,
       required: true,
+      default: false,
     },
-    image: [],
+    image: String,
     description: {
       type: String,
+      required: true,
     },
-    type: {
+    roomType: {
       type: String,
+      required: true,
     },
   },
   {
