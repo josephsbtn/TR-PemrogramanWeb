@@ -1,43 +1,45 @@
 import React, { useEffect, useState } from "react";
 import Topnav from "../components/topnav";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../components/loadingSpinner";
 
 function EditRoom({ match }) {
-  const [room, setRoom] = useState({});
+  const { roomid } = useParams();
+  const [room, setRoom] = useState(null);
   const [image, setImage] = useState("");
   const [roomName, setRoomName] = useState("");
   const [capacity, setCapacity] = useState("");
   const [roomType, setRoomType] = useState("");
   const [description, setDescription] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    const fetchRoomData = async () => {
+    const fetchRoom = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
-        const response = await axios.get(`/api/rooms/${match.params.id}`);
-        const { roomName, capacity, description, roomType, image } =
-          response.data;
-        setRoomName(roomName);
-        setCapacity(capacity);
-        setDescription(description);
-        setRoomType(roomType);
-        setImage(image);
-        setLoading(false);
+        const { data } = await axios.post("/api/rooms/getallroomsID", {
+          roomid,
+        });
+        setRoom(data);
+        setRoomName(data.roomName);
+        setCapacity(data.capacity);
+        setRoomType(data.roomType);
+        setDescription(data.description);
+        setImage(data.image);
       } catch (error) {
-        console.error("Error loading room data:", error);
-        setError("Error loading room data. Please try again.");
+        console.error("Error fetching room:", error);
+        setError("Failed to load room data.");
+      } finally {
         setLoading(false);
       }
     };
-    fetchRoomData();
-  }, [match.params.id]);
+    fetchRoom();
+  }, [roomid]);
 
-  function convertBase64(e) {
+  const convertBase64 = (e) => {
     const file = e.target.files[0];
     if (!file) {
       setError("No image selected.");
@@ -57,9 +59,24 @@ function EditRoom({ match }) {
     reader.readAsDataURL(file);
     reader.onload = () => {
       setImage(reader.result);
-      setError(null); // Clear error if any
+      setError(null);
     };
-  }
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      setError(null);
+      setSuccess(false);
+      await axios.delete("/api/rooms/deleteRoom", {
+        data: { roomid },
+      });
+      setSuccess(true);
+    } catch (error) {
+      console.error("Error deleting room:", error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,7 +85,7 @@ function EditRoom({ match }) {
       return;
     }
 
-    const newRoom = {
+    const updatedRoom = {
       roomName,
       capacity,
       description,
@@ -80,21 +97,17 @@ function EditRoom({ match }) {
       setLoading(true);
       setError(null);
       setSuccess(false);
-      await axios.post("/api/rooms/addroom", newRoom);
+      await axios.put("/api/rooms/updateRoom", {
+        ...updatedRoom,
+        roomid,
+      });
+      setLoading(false);
       setSuccess(true);
-      setLoading(false);
-      setRoomName("");
-      setCapacity("");
-      setDescription("");
-      setRoomType("");
-      setImage("");
     } catch (error) {
-      if (error.response && error.response.data) {
-        setError(`Error: ${error.response.data.message}`);
-      } else {
-        setError("There was a problem with your request. Please try again.");
-      }
-      setLoading(false);
+      setError(
+        error.response?.data?.message ||
+          "There was a problem with your request. Please try again."
+      );
     }
   };
 
@@ -113,13 +126,15 @@ function EditRoom({ match }) {
                 </h1>
                 <Link
                   to="/roomlist"
-                  className="hover:bg-red-700 transition-all duration-300 text-base h-8 w-8 flex justify-center items-center font-montserrat font-medium mr-6 rounded-full bg-red-900 text-white">
+                  className="hover:bg-red-700 transition-all duration-300 text-base h-8 w-8 flex justify-center items-center font-montserrat font-medium mr-6 rounded-full bg-red-900 text-white"
+                >
                   X
                 </Link>
               </div>
               <form
                 onSubmit={handleSubmit}
-                className="w-full flex flex-col justify-center">
+                className="w-full flex flex-col justify-center"
+              >
                 <div className="w-full flex items-center justify-center p-6">
                   <div className="flex w-[50%] flex-col text-left space-y-2">
                     <label className="font-medium font-montserrat text-base">
@@ -161,7 +176,11 @@ function EditRoom({ match }) {
                       value={roomType}
                       onChange={(e) => setRoomType(e.target.value)}
                       className="w-[80%] border-2 border-myBlue p-2 font-montserrat text-base rounded-md"
-                      required>
+                      required
+                    >
+                      <option value="" disabled>
+                        Select room type
+                      </option>
                       <option value="classroom">Classroom</option>
                       <option value="Laboratorium">Laboratorium</option>
                       <option value="computer lab">Computer Lab</option>
@@ -192,7 +211,8 @@ function EditRoom({ match }) {
                 </div>
                 <button
                   type="submit"
-                  className="bg-myBlue text-white font-medium font-montserrat rounded-xl p-2 w-[20%] ml-6 mb-8 hover:bg-myGrey transition-all duration-200">
+                  className="bg-myBlue text-white font-medium font-montserrat rounded-xl p-2 w-[20%] ml-6 mb-8 hover:bg-myGrey transition-all duration-200"
+                >
                   Save Changes
                 </button>
                 {error && <p className="text-red-600 ml-6">{error}</p>}
