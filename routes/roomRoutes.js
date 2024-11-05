@@ -13,21 +13,10 @@ router.get("/getallrooms", async (req, res) => {
 });
 
 router.post("/getallroomsID", async (req, res) => {
+  const roomid = req.body.roomid;
   try {
-    const { roomid } = req.body; // Get roomid from the request body
-    let rooms;
-
-    if (roomid) {
-      rooms = await Room.findById(roomid);
-    } else {
-      rooms = await Room.find({});
-    }
-
-    if (!rooms) {
-      return res.status(404).json({ message: "Room not found" });
-    }
-
-    res.send(rooms);
+    const room = await Room.findOne({ _id: roomid });
+    res.send(room);
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
@@ -42,4 +31,29 @@ router.post("/addroom", async (req, res) => {
   }
 });
 
+router.put("/updateRoom", async (req, res) => {
+  try {
+    const updatedRoom = await Room.findOneAndUpdate(
+      { _id: req.body.roomid },
+      req.body
+    );
+    res.send(updatedRoom);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+});
+
+router.delete("/deleteRoom", async (req, res) => {
+  try {
+    const deletedRoom = await Room.findByIdAndDelete(
+      {
+        _id: req.body.roomid,
+      },
+      req.body
+    );
+    res.send(deletedRoom);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+});
 module.exports = router;
