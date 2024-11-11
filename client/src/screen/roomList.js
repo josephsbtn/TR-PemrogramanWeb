@@ -45,7 +45,8 @@ function RoomList() {
                   height="30"
                   viewBox="0 0 30 30"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <g id="mdi:home-plus">
                     <path
                       id="Vector"
@@ -71,7 +72,8 @@ function RoomList() {
                 {rooms.map((room) => (
                   <div
                     key={room.id}
-                    className="bg-white h-fit shadow-md shadow-myGrey rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
+                    className="bg-white h-fit shadow-md shadow-myGrey rounded-xl my-5 w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out"
+                  >
                     <Room room={room} />
                   </div>
                 ))}
