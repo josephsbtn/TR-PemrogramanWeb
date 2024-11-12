@@ -1,6 +1,6 @@
 import React from "react";
 import Topnav from "../components/topnav";
-import Navbar from "../components/navbar";
+import Navbar from "../components/navbarUser";
 function BookingData() {
   return (
     <>
