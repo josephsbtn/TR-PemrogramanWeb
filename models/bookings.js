@@ -24,6 +24,16 @@ const bookingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    suratPeminjaman: {
+      type: String,
+      required: true,
+    },
+    status: {
+      type: String,
+      required: true,
+      default: "Pending",
+      enum: ["Pending", "Approved", "Rejected"],
+    },
   },
   {
     timestamps: true,

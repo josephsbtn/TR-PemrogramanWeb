@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Booking = require("../models/bookings");
 
-router.post("/", async (req, res) => {
-  const { room, user, checkIn, checkOut } = req.body;
+router.post("/newBookings", async (req, res) => {
   try {
-    const newBooking = await Booking.create({ room, user, checkIn, checkOut });
-    res.status(201).json(newBooking);
+    const newBook = await Booking.create(req.body);
+    res.send(newBook);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 });
 

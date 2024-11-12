@@ -7,6 +7,7 @@ import axios from "axios";
 
 function HomePage() {
   const [rooms, setRooms] = useState([]);
+  const [availableRooms, setAvailableRooms] = useState([]);
   const [users, SetUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -42,7 +43,7 @@ function HomePage() {
 
   return (
     <>
-      <section className="flex h-screen w-full bg-anotherGrey ">
+      <section className="flex h-fit w-full bg-anotherGrey ">
         <nav className="h-screen w-[25%]">
           <Navbar />
         </nav>
@@ -51,7 +52,6 @@ function HomePage() {
           <Topnav />
 
           <div className="flex justify-center my-9 w-full">
-            {/* dynamic content */}
             <div className="flex w-[80%] h-fit justify-around items-center">
               <div className="flex flex-col justify-center items-center w-[20%] h-[100%] p-2 border bg-white rounded-3xl shadow-md">
                 <div className=" flex justify-center items-center p-3 rounded-2xl m-2 bg-myGrey">
@@ -101,22 +101,35 @@ function HomePage() {
                   {users.length}
                 </h1>
               </div>
-              <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border p-2 bg-white rounded-3xl"></div>
+              <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border p-2 bg-white rounded-3xl">
+                <h1 className="text-sm font-montserrat font-medium ">
+                  Available Rooms
+                </h1>
+                <h1 className="text-2xl font-montserrat font-bold text-myBlue border-b-2 px-2 border-myGrey">
+                  {rooms.filter((room) => room.statusDipinjam === false).length}
+                </h1>
+              </div>
             </div>
           </div>
-          <div className="w-[90%] h-[20%] py-4 bg-white flex ">
+          <div className="w-[90%] h-fit py-4 bg-white rounded-lg flex mb-4 ">
             {loading ? (
-              <Loading />
+              <div className="w-full h-full flex justify-center p-4 items-center">
+                <Loading />
+              </div>
             ) : error ? (
-              <h1 className="text-center w-full">Error</h1>
+              <div className="w-full flex justify-center">
+                <h1 className="text-center p-4 w-1/4 bg-white rounded-2xl text-red-800 font-montserrat font-bold">
+                  Something Wrong Please Try Again!!
+                </h1>
+              </div>
             ) : (
-              <div className="grid grid-cols-3 w-full h-screen justify-center items-center">
+              <div className="grid grid-cols-3 w-full h-fit justify-center items-center mb-4">
                 {rooms
                   .filter((room) => room.statusDipinjam === false)
                   .map((room) => (
                     <div
                       key={room.id}
-                      className="bg-white shadow-md shadow-myGrey rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
+                      className="bg-white shadow-md shadow-myGrey my-2 rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
                       <Room room={room} />
                     </div>
                   ))}

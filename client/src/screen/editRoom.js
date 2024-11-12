@@ -3,9 +3,10 @@ import Topnav from "../components/topnav";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../components/loadingSpinner";
-import trashBin from "../components/trashBin";
+import TrashBin from "../components/trashBin";
+import Modal from "../components/modal";
 
-function EditRoom({ match }) {
+function EditRoom() {
   const { roomid } = useParams();
   const [room, setRoom] = useState(null);
   const [image, setImage] = useState("");
@@ -16,6 +17,7 @@ function EditRoom({ match }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchRoom = async () => {
@@ -119,6 +121,25 @@ function EditRoom({ match }) {
       ) : (
         <section className="h-screen w-full flex flex-col bg-anotherGrey">
           <Topnav />
+          <Modal open={open} onClose={() => setOpen(false)}>
+            <div className="flex flex-col items-center justify-center h-fit w-fit p-6 rounded-2xl space-y-4">
+              <div className="h-fit w-fit p-4 bg-red-800 rounded-full">
+                <TrashBin />
+              </div>
+
+              <h6 className="text-md font-montserrat text-black font-bold text-center ">
+                Are you sure you want <br /> to delete this room?
+              </h6>
+              <div className="flex space-x-4">
+                <button
+                  className="bg-red-800 text-white px-4 py-2 rounded-xl font-montserrat font-bold"
+                  onClick={handleDelete}>
+                  Yes
+                </button>
+                <button onClick={() => setOpen(false)}>No</button>
+              </div>
+            </div>
+          </Modal>
           <div className="h-screen w-full flex flex-col items-center justify-center">
             <div className="flex w-[90%] rounded-xl h-fit flex-col justify-center bg-white">
               <div className="w-full flex justify-between items-center border-b-2 border-myBlue">
@@ -127,15 +148,13 @@ function EditRoom({ match }) {
                 </h1>
                 <Link
                   to="/roomlist"
-                  className="hover:bg-red-700 transition-all duration-300 text-base h-8 w-8 flex justify-center items-center font-montserrat font-medium mr-6 rounded-full bg-red-900 text-white"
-                >
+                  className="hover:bg-red-700 transition-all duration-300 text-base h-8 w-8 flex justify-center items-center font-montserrat font-medium mr-6 rounded-full bg-red-900 text-white">
                   X
                 </Link>
               </div>
               <form
                 onSubmit={handleSubmit}
-                className="w-full flex flex-col justify-center"
-              >
+                className="w-full flex flex-col justify-center">
                 <div className="w-full flex items-center justify-center p-6">
                   <div className="flex w-[50%] flex-col text-left space-y-2">
                     <label className="font-medium font-montserrat text-base">
@@ -177,8 +196,7 @@ function EditRoom({ match }) {
                       value={roomType}
                       onChange={(e) => setRoomType(e.target.value)}
                       className="w-[80%] border-2 border-myBlue p-2 font-montserrat text-base rounded-md"
-                      required
-                    >
+                      required>
                       <option value="" disabled>
                         Select room type
                       </option>
@@ -215,46 +233,26 @@ function EditRoom({ match }) {
                 <div className="flex justify-between">
                   <button
                     type="submit"
-                    className="bg-myBlue text-white font-medium font-montserrat rounded-xl p-2 w-[20%] ml-6 mb-8 hover:bg-myGrey transition-all duration-200"
-                  >
+                    className="bg-myBlue text-white font-medium font-montserrat rounded-xl p-2 w-[20%] ml-6 mb-8 hover:bg-myGrey transition-all duration-200">
                     Save Changes
-                  </button>
-                  <button className="bg-red-700 rounded-full h-fit w-fit p-2 mr-6">
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g id="iconoir:trash-solid">
-                        <g id="Group">
-                          <path
-                            id="Vector"
-                            d="M25 11.25L22.5062 25.4325C22.4045 26.0117 22.1019 26.5365 21.6515 26.9146C21.2011 27.2928 20.6318 27.5 20.0437 27.5H9.95625C9.36818 27.5 8.79891 27.2928 8.34853 26.9146C7.89815 26.5365 7.59549 26.0117 7.49375 25.4325L5 11.25"
-                            fill="white"
-                          />
-                          <path
-                            id="Vector_2"
-                            d="M26.25 7.5H19.2188M19.2188 7.5V5C19.2188 4.33696 18.9554 3.70107 18.4865 3.23223C18.0177 2.76339 17.3818 2.5 16.7188 2.5H13.2812C12.6182 2.5 11.9823 2.76339 11.5135 3.23223C11.0446 3.70107 10.7812 4.33696 10.7812 5V7.5M19.2188 7.5H10.7812M3.75 7.5H10.7812M25 11.25L22.5062 25.4325C22.4045 26.0117 22.1019 26.5365 21.6515 26.9146C21.2011 27.2928 20.6318 27.5 20.0437 27.5H9.95625C9.36818 27.5 8.79891 27.2928 8.34853 26.9146C7.89815 26.5365 7.59549 26.0117 7.49375 25.4325L5 11.25H25Z"
-                            stroke="white"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </g>
-                      </g>
-                    </svg>
                   </button>
                 </div>
 
-                {error && <p className="text-red-600 ml-6">{error}</p>}
+                {error && <p className="text-red-800 ml-6">{error}</p>}
                 {success && (
                   <p className="text-green-600 ml-6">
                     Room updated successfully!
                   </p>
                 )}
               </form>
+              <div className="w-full flex justify-end">
+                <button
+                  className="bg-red-800 rounded-full h-fit w-fit p-2 m-4 on"
+                  type="button"
+                  onClick={() => setOpen(true)}>
+                  <TrashBin />
+                </button>
+              </div>
             </div>
           </div>
         </section>
