@@ -148,22 +148,63 @@ function BookingData() {
               </div>
             </div>
           </div>
-          <div className="w-[90%] h-full pt-10 bg-white flex flex-col ">
-            <div className="w-full h-fit bg-white flex flex-col ">
-              <img
-                src="https://img.freepik.com/free-vector/instagram-icon_1057-2227.jpg?semt=ais_hybrid"
-                alt="Deskripsi Gambar"
-                className="w-[75px] h-[75px]"
-              />
-              <br />
-              <hr className="w-full h-20 border-t-2 border-gray-300 my-2 flex-col" />
+          <div className="w-[90%] h-full bg-white flex flex-col ">
+            <div className="w-full h-fit p-4  flex border-t-2 border-black border-opacity-50 items-center justify-between">
+              <div className="flex flex-col items-center">
+                <img
+                  src="https://img.freepik.com/free-vector/instagram-icon_1057-2227.jpg?semt=ais_hybrid"
+                  alt="Deskripsi Gambar"
+                  className="w-[75px] h-[75px] "
+                />
+                <h1 className="text-sm font-montserrat font-bold text-myBlue ">
+                  Instagram
+                </h1>
+              </div>
+              <div className="flex flex-col items-center">
+                <p className="mr-5 text-sm">Status peminjaman: </p>
+                <p className="mr-5 text-sm">Nama Peminjam: </p>
+                <p className="mr-5 text-sm">Tanggal Pinjam: </p>
+              </div>
             </div>
-            <hr className="w-full h-20 border-t-2 border-gray-300 my-2 flex-col" />
-            <hr className="w-full h-20 border-t-2 border-gray-300 my-2 flex-col" />
-            <hr className="w-full h-20 border-t-2 border-gray-300 my-2 flex-col" />
-            <hr className="w-full h-20 border-t-2 border-gray-300 my-2 flex-col" />
-            <hr className="w-full h-20 border-t-2 border-gray-300 my-2 flex-col" />
+
+            <div className="w-full h-fit p-4  flex border-t-2 border-black border-opacity-50 items-center justify-between">
+              <div className="flex flex-col items-center">
+                <img
+                  src="https://img.freepik.com/free-vector/instagram-icon_1057-2227.jpg?semt=ais_hybrid"
+                  alt="Deskripsi Gambar"
+                  className="w-[75px] h-[75px] "
+                />
+                <h1 className="text-sm font-montserrat font-bold text-myBlue ">
+                  Instagram
+                </h1>
+              </div>
+              <div className="flex flex-col items-center">
+                <p className="mr-5 text-sm"> Status peminjaman: </p>
+                <p className="mr-5 text-sm"> Nama Peminjam: </p>
+                <p className="mr-5 text-sm"> Tanggal Pinjam: </p>
+              </div>
+            </div>
+
+            <div className="w-full h-fit p-4  flex border-t-2 border-black border-opacity-50 items-center justify-between">
+              <div className="flex flex-col items-center">
+                <img
+                  src="https://img.freepik.com/free-vector/instagram-icon_1057-2227.jpg?semt=ais_hybrid"
+                  alt="Deskripsi Gambar"
+                  className="w-[75px] h-[75px] "
+                />
+                <h1 className="text-sm font-montserrat font-bold text-myBlue ">
+                  Instagram
+                </h1>
+              </div>
+              <div className="flex flex-col items-center">
+                <p className="mr-5 text-sm"> Status peminjaman: </p>
+                <p className="mr-5 text-sm"> Nama Peminjam: </p>
+                <p className="mr-5 text-sm"> Tanggal Pinjam: </p>
+              </div>
+            </div>
+
           </div>
+
         </div>
       </section>
     </>
