@@ -76,6 +76,7 @@ function EditRoom() {
         data: { roomid },
       });
       setSuccess(true);
+      setLoading(false);
     } catch (error) {
       console.error("Error deleting room:", error);
     }

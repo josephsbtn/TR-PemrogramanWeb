@@ -46,7 +46,7 @@ function Addroom() {
 
   const Submit = async (e) => {
     e.preventDefault();
-    if (!roomName || !capacity || !description || !roomType) {
+    if (!roomName || !capacity || !description || !roomType || !image) {
       setError("Please fill in all required fields.");
       return;
     }
@@ -91,22 +91,19 @@ function Addroom() {
               </h1>
               <Link
                 to="/roomlist"
-                className="hover:bg-red-700 transition-all duration-300 text-base h-8 w-8 flex justify-center items-center font-montserrat font-medium mr-6 rounded-full bg-red-900 text-white"
-              >
+                className="hover:bg-red-700 transition-all duration-300 text-base h-8 w-8 flex justify-center items-center font-montserrat font-medium mr-6 rounded-full bg-red-900 text-white">
                 X
               </Link>
             </div>
 
             <form
               onSubmit={Submit}
-              className=" w-full flex flex-col  justify-center"
-            >
+              className=" w-full flex flex-col  justify-center">
               <div className=" w-full flex items-center justify-center p-6">
                 <div className="flex w-[50%]  flex-col text-left space-y-2 ">
                   <label
                     for="name"
-                    className=" font-medium font-montserrat text-base "
-                  >
+                    className=" font-medium font-montserrat text-base ">
                     Room name
                   </label>
                   <input
@@ -121,8 +118,7 @@ function Addroom() {
 
                   <label
                     for="capacity"
-                    className="font-montserrat text-base font-medium"
-                  >
+                    className="font-montserrat text-base font-medium">
                     Capacity
                   </label>
                   <input
@@ -136,8 +132,7 @@ function Addroom() {
                   />
                   <label
                     for="deskripsi"
-                    className=" font-medium font-montserrat text-base "
-                  >
+                    className=" font-medium font-montserrat text-base ">
                     Description
                   </label>
                   <input
@@ -154,8 +149,7 @@ function Addroom() {
                 <div className="flex h-full w-[50%] flex-col text-left space-y-4 ">
                   <label
                     for="type"
-                    className=" font-medium font-montserrat text-base text-left "
-                  >
+                    className=" font-medium font-montserrat text-base text-left ">
                     Room type
                   </label>
 
@@ -165,8 +159,7 @@ function Addroom() {
                     className="w-[80%] border-2 border-myBlue p-2 font-montserrat text-base rounded-md"
                     value={roomType}
                     onChange={(e) => setRoomType(e.target.value)}
-                    required
-                  >
+                    required>
                     <option value="" disabled>
                       Select room type
                     </option>
@@ -179,8 +172,7 @@ function Addroom() {
 
                   <label
                     for="image"
-                    className=" font-medium font-montserrat text-base "
-                  >
+                    className=" font-medium font-montserrat text-base ">
                     Room Image
                   </label>
                   <input
@@ -208,8 +200,7 @@ function Addroom() {
 
               <button
                 type="submit"
-                className="bg-myBlue text-white font-medium font-montserrat rounded-xl p-2 w-[20%] ml-6 mb-8 hover:bg-myGrey transition-all duration-200"
-              >
+                className="bg-myBlue text-white font-medium font-montserrat rounded-xl p-2 w-[20%] ml-6 mb-8 hover:bg-myGrey transition-all duration-200">
                 Add Room
               </button>
               {error && <p className="text-red-600 ml-6">{error.message}</p>}
