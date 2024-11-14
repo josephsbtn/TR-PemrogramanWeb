@@ -7,7 +7,7 @@ import axios from "axios";
 
 function HomePage() {
   const [rooms, setRooms] = useState([]);
-  const [availableRooms, setAvailableRooms] = useState([]);
+  const [books, setBooks] = useState([]);
   const [users, SetUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -19,6 +19,20 @@ function HomePage() {
         const data = (await axios.get("/api/rooms/getallrooms")).data;
         console.log("data :", data);
         setRooms(data);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+        console.log(error);
+        setLoading(false);
+      }
+    };
+
+    const fetchBookings = async () => {
+      try {
+        setLoading(true);
+        const data = (await axios.get("/api/bookings/getallbookings")).data;
+        console.log("data :", data);
+        setBooks(data);
         setLoading(false);
       } catch (error) {
         setError(true);
@@ -52,7 +66,7 @@ function HomePage() {
           <Topnav />
 
           <div className="flex justify-center my-9 w-full">
-            <div className="flex w-[80%] h-fit justify-around items-center">
+            <div className="flex w-[80%]  h-fit justify-around items-center">
               <div className="flex flex-col justify-center items-center w-[20%] h-[100%] p-2 border bg-white rounded-3xl shadow-md">
                 <div className=" flex justify-center items-center p-3 rounded-2xl m-2 bg-myGrey">
                   <svg
@@ -111,28 +125,30 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="w-[90%] h-fit py-4 bg-white rounded-lg flex mb-4 ">
+          <div className="w-[90%] h-fit py-4  rounded-lg flex mb-4 ">
             {loading ? (
               <div className="w-full h-full flex justify-center p-4 items-center">
                 <Loading />
               </div>
             ) : error ? (
               <div className="w-full flex justify-center">
-                <h1 className="text-center p-4 w-1/4 bg-white rounded-2xl text-red-800 font-montserrat font-bold">
+                <h1 className="text-center p-4 w-1/4  rounded-2xl text-red-800 font-montserrat font-bold">
                   Something Wrong Please Try Again!!
                 </h1>
               </div>
             ) : (
-              <div className="grid grid-cols-3 w-full h-fit justify-center items-center mb-4">
-                {rooms
-                  .filter((room) => room.statusDipinjam === false)
-                  .map((room) => (
-                    <div
-                      key={room.id}
-                      className="bg-white shadow-md shadow-myGrey my-2 rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
-                      <Room room={room} />
-                    </div>
-                  ))}
+              <div className="flex flex-col w-full h-auto">
+                <div className="grid grid-cols-3 w-full h-fit p-4 rounded-2xl bg-white justify-center items-center mb-4">
+                  {rooms
+                    .filter((room) => room.statusDipinjam === false)
+                    .map((room) => (
+                      <div
+                        key={room.id}
+                        className="bg-white shadow-md shadow-myGrey my-2 rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
+                        <Room room={room} />
+                      </div>
+                    ))}
+                </div>
               </div>
             )}
           </div>

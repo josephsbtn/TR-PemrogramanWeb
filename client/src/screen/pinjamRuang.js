@@ -34,17 +34,21 @@ function PinjamRuang() {
         </div>
         <div className="h-screen w-full flex flex-col items-center">
           <Topnav />
-          <div className="flex flex-col h-screen w-full justify-center items-center">
+          <div className="flex flex-col h-auto w-full justify-center items-center ">
             {loading ? (
-              <Loading />
+              <div className="h-screen w-full flex justify-center items-center bg-anotherGrey ">
+                <Loading />
+              </div>
             ) : error ? (
-              <h1 className="text-center w-full">Error</h1>
+              <div className="h-screen w-full flex justify-center items-center bg-anotherGrey ">
+                <h1 className="text-center w-full">Error</h1>
+              </div>
             ) : (
-              <div className="grid grid-cols-3 w-full h-screen justify-center items-center">
+              <div className="grid grid-cols-3 w-full h-auto mt-10 bg-anotherGrey">
                 {rooms.map((room) => (
                   <div
                     key={room.id}
-                    className="bg-white shadow-md shadow-myGrey rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
+                    className="bg-white h-fit shadow-md shadow-myGrey rounded-xl my-5 w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
                     <Room room={room} />
                   </div>
                 ))}
