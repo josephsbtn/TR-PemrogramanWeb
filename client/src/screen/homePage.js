@@ -3,6 +3,7 @@ import Navbar from "../components/navbar";
 import Topnav from "../components/topnav";
 import Room from "../components/room";
 import Loading from "../components/loadingSpinner";
+import Homecheck from "../components/homecheck";
 import axios from "axios";
 
 function HomePage() {
@@ -74,7 +75,8 @@ function HomePage() {
                     height="40"
                     viewBox="0 0 40 40"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <g id="fluent-mdl2:room">
                       <path
                         id="Vector"
@@ -98,7 +100,8 @@ function HomePage() {
                     height="40"
                     viewBox="0 0 30 30"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <g id="bx:user">
                       <path
                         id="Vector"
@@ -116,6 +119,7 @@ function HomePage() {
                 </h1>
               </div>
               <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border p-2 bg-white rounded-3xl">
+                <Homecheck />
                 <h1 className="text-sm font-montserrat font-medium ">
                   Available Rooms
                 </h1>
@@ -144,7 +148,8 @@ function HomePage() {
                     .map((room) => (
                       <div
                         key={room.id}
-                        className="bg-white shadow-md shadow-myGrey my-2 rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
+                        className="bg-white shadow-md shadow-myGrey my-2 rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out"
+                      >
                         <Room room={room} />
                       </div>
                     ))}

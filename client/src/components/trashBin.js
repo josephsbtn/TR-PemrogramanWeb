@@ -7,7 +7,8 @@ function trashBin() {
       height="30"
       viewBox="0 0 30 30"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <g id="iconoir:trash-solid">
         <g id="Group">
           <path
