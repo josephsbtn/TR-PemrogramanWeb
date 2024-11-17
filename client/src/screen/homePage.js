@@ -8,10 +8,39 @@ import axios from "axios";
 
 function HomePage() {
   const [rooms, setRooms] = useState([]);
-  const [books, setBooks] = useState([]);
+  const [roomBooked, setRoomBooked] = useState([]);
   const [users, SetUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const getCurrentDate = () => new Date().toISOString().split("T")[0];
+  const getCurrentTime = () =>
+    new Date().toTimeString().split(" ")[0].slice(0, 5);
+  const fetchAvailableRooms = async () => {
+    try {
+      setLoading(true);
+
+      const requestDate = getCurrentDate();
+      const requestTime = getCurrentTime();
+
+      const { data } = await axios.post("/api/bookings/availableRooms", {
+        date: requestDate,
+        time: requestTime,
+      });
+
+      setLoading(false);
+      console.log("Booked room IDs:", data);
+      setRoomBooked(data);
+    } catch (error) {
+      setError(true);
+      console.error("Error fetching available rooms:", error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchAvailableRooms();
+  }, [rooms._id]);
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -20,20 +49,6 @@ function HomePage() {
         const data = (await axios.get("/api/rooms/getallrooms")).data;
         console.log("data :", data);
         setRooms(data);
-        setLoading(false);
-      } catch (error) {
-        setError(true);
-        console.log(error);
-        setLoading(false);
-      }
-    };
-
-    const fetchBookings = async () => {
-      try {
-        setLoading(true);
-        const data = (await axios.get("/api/bookings/getallbookings")).data;
-        console.log("data :", data);
-        setBooks(data);
         setLoading(false);
       } catch (error) {
         setError(true);
@@ -75,8 +90,7 @@ function HomePage() {
                     height="40"
                     viewBox="0 0 40 40"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                    xmlns="http://www.w3.org/2000/svg">
                     <g id="fluent-mdl2:room">
                       <path
                         id="Vector"
@@ -100,8 +114,7 @@ function HomePage() {
                     height="40"
                     viewBox="0 0 30 30"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                    xmlns="http://www.w3.org/2000/svg">
                     <g id="bx:user">
                       <path
                         id="Vector"
@@ -119,12 +132,15 @@ function HomePage() {
                 </h1>
               </div>
               <div className="flex flex-col justify-center items-center w-[20%] h-[100%] border p-2 bg-white rounded-3xl">
-                <Homecheck />
+                <div className=" flex justify-center items-center p-3 rounded-2xl m-2 bg-myGrey">
+                  <Homecheck />
+                </div>
+
                 <h1 className="text-sm font-montserrat font-medium ">
-                  Available Rooms
+                  Available Today
                 </h1>
                 <h1 className="text-2xl font-montserrat font-bold text-myBlue border-b-2 px-2 border-myGrey">
-                  {rooms.filter((room) => room.statusDipinjam === false).length}
+                  {roomBooked.length}
                 </h1>
               </div>
             </div>
@@ -143,16 +159,13 @@ function HomePage() {
             ) : (
               <div className="flex flex-col w-full h-auto">
                 <div className="grid grid-cols-3 w-full h-fit p-4 rounded-2xl bg-white justify-center items-center mb-4">
-                  {rooms
-                    .filter((room) => room.statusDipinjam === false)
-                    .map((room) => (
-                      <div
-                        key={room.id}
-                        className="bg-white shadow-md shadow-myGrey my-2 rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out"
-                      >
-                        <Room room={room} />
-                      </div>
-                    ))}
+                  {rooms.map((room) => (
+                    <div
+                      key={room.id}
+                      className="bg-white shadow-md shadow-myGrey my-2 rounded-xl w-[85%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
+                      <Room room={room} />
+                    </div>
+                  ))}
                 </div>
               </div>
             )}

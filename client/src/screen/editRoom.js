@@ -120,7 +120,7 @@ function EditRoom() {
       {loading ? (
         <Loading />
       ) : (
-        <section className="h-screen w-full flex flex-col bg-anotherGrey">
+        <sectiosn className="h-screen w-full flex flex-col bg-anotherGrey">
           <Topnav />
           <Modal open={open} onClose={() => setOpen(false)}>
             <div className="flex flex-col items-center justify-center h-fit w-fit p-6 rounded-2xl space-y-4">
@@ -256,7 +256,7 @@ function EditRoom() {
               </div>
             </div>
           </div>
-        </section>
+        </sectiosn>
       )}
     </>
   );

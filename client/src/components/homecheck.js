@@ -3,27 +3,34 @@ import React from "react";
 function homecheck() {
   return (
     <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+      width="40"
+      height="40"
+      viewBox="0 0 30 30"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g id="tabler:home-check">
+      xmlns="http://www.w3.org/2000/svg">
+      <g id="system-uicons:home-check">
         <g id="Group">
           <path
             id="Vector"
-            d="M9 21V15C9 14.4696 9.21071 13.9609 9.58579 13.5858C9.96086 13.2107 10.4696 13 11 13H13C13.5304 13 14.0391 13.2107 14.4142 13.5858C14.7893 13.9609 15 14.4696 15 15"
-            stroke="#5863F8"
-            stroke-width="2"
+            d="M2.14282 15L15 2.14282L27.8571 15"
+            stroke="white"
+            stroke-width="1.42857"
             stroke-linecap="round"
             stroke-linejoin="round"
           />
           <path
             id="Vector_2"
-            d="M19 13.488V12H21L12 3L3 12H5V19C5 19.5304 5.21071 20.0391 5.58579 20.4142C5.96086 20.7893 6.46957 21 7 21H11.525M15 19L17 21L21 17"
-            stroke="#5863F8"
-            stroke-width="2"
+            d="M5 12.1428V22.1428C5 22.9006 5.30102 23.6273 5.83684 24.1631C6.37266 24.6989 7.09938 25 7.85714 25H22.1429C22.9006 25 23.6273 24.6989 24.1632 24.1631C24.699 23.6273 25 22.9006 25 22.1428V12.1428"
+            stroke="white"
+            stroke-width="1.42857"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            id="Vector_3"
+            d="M10.7144 16.4284L13.5715 19.2856L19.2858 13.5713"
+            stroke="white"
+            stroke-width="1.42857"
             stroke-linecap="round"
             stroke-linejoin="round"
           />

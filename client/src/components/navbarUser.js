@@ -54,7 +54,7 @@ function navbarUser() {
           </Link>
         </div>
         <div className="border-b-2 border-white py-4 w-full ">
-          <Link to={"/pinjamRuang"}>
+          <Link to={"/bookRoomList"}>
             <div className="flex justify-start mx-5 items-center ">
               <svg
                 width="20"
@@ -68,7 +68,7 @@ function navbarUser() {
                 />
               </svg>
               <p className="text-white font-montserrat ml-10 text-start">
-                Pinjam Ruangan
+                Room Booking
               </p>
             </div>
           </Link>
@@ -87,7 +87,7 @@ function navbarUser() {
                 />
               </svg>
               <p className="text-white font-montserrat ml-10 text-start">
-                Peminjaman Saya
+                My Booked
               </p>
             </div>
           </Link>
@@ -107,7 +107,7 @@ function navbarUser() {
                 />
               </svg>
               <p className="text-white font-montserrat ml-10 text-start">
-                Lainnya
+                Another
               </p>
             </div>
           </Link>

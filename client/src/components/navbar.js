@@ -93,7 +93,7 @@ function navbar() {
           </Link>
         </div>
         <div className="border-b-2 border-white py-4 w-full ">
-          <Link to={"/booking-request"}>
+          <Link to={"/BookingRequest"}>
             <div className="flex justify-start mx-5 items-center">
               <svg
                 width="20"
@@ -108,29 +108,6 @@ function navbar() {
               </svg>
               <p className="text-white font-montserrat ml-10 text-start">
                 Booking Request
-              </p>
-            </div>
-          </Link>
-        </div>
-        <div className="border-b-2 border-white py-4 w-full">
-          <Link href="">
-            <div className="flex justify-start mx-5 items-center ">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 30 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <g id="uis:calender">
-                  <path
-                    id="Vector"
-                    d="M2.5 23.75C2.5 25.875 4.125 27.5 6.25 27.5H23.75C25.875 27.5 27.5 25.875 27.5 23.75V13.75H2.5V23.75ZM23.75 5H21.25V3.75C21.25 3 20.75 2.5 20 2.5C19.25 2.5 18.75 3 18.75 3.75V5H11.25V3.75C11.25 3 10.75 2.5 10 2.5C9.25 2.5 8.75 3 8.75 3.75V5H6.25C4.125 5 2.5 6.625 2.5 8.75V11.25H27.5V8.75C27.5 6.625 25.875 5 23.75 5Z"
-                    fill="white"
-                  />
-                </g>
-              </svg>
-              <p className="text-white font-montserrat ml-10 text-start">
-                Calender
               </p>
             </div>
           </Link>
