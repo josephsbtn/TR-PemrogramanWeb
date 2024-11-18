@@ -65,7 +65,7 @@ function PinjamRuang() {
   };
 
   return (
-    <section className="flex justify-between h-[2000px] w-full bg-anotherGrey">
+    <section className="flex justify-between h-auto w-full bg-anotherGrey">
       <div className="h-screen w-[25%]">
         <NavbarUser />
       </div>

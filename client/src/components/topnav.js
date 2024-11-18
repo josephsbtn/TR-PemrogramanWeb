@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function topnav() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -22,13 +23,15 @@ function topnav() {
       </div>
 
       <div className="flex flex-col ml-4">
-        <h1 className="text-myBlue text-lg font-montserrat font-bold">
-          {user ? <>{user.username}</> : ""}
-        </h1>
-        <h5 className="text-black text-xs font-montserrat   ">
-          {" "}
-          Status: {user.isAdmin ? <>Admin</> : <>User</>}
-        </h5>
+        <Link to="/profile">
+          <h1 className="text-myBlue text-lg font-montserrat font-bold">
+            {user ? <>{user.username}</> : ""}
+          </h1>
+          <h5 className="text-black text-xs font-montserrat   ">
+            {" "}
+            Status: {user.isAdmin ? <>Admin</> : <>User</>}
+          </h5>
+        </Link>
       </div>
     </nav>
   );

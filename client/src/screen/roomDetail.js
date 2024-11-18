@@ -50,7 +50,11 @@ function RoomDetail() {
   }
 
   if (loading) {
-    return <LoadingSpinner />;
+    return (
+      <div className="flex justify-center items-center h-screen w-full bg-anotherGrey">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   if (error) {
