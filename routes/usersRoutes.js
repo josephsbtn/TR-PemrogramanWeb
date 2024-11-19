@@ -5,8 +5,8 @@ const User = require("../models/users");
 
 router.get("/getallusers", async (req, res) => {
   try {
-    const rooms = await User.find({});
-    res.send(rooms);
+    const user = await User.find({});
+    res.send(user);
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
@@ -35,14 +35,6 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ username: username, password: password });
 
     if (user) {
-      const tempUser = {
-        username: user.username,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        isAdmin: user.isAdmin,
-        _id: user._id,
-      };
       res.send(user);
     } else {
       return res.status(400).json({ message: "Login Failed" });

@@ -12,18 +12,18 @@ const SignupForm = () => {
   const [success, setSuccess] = useState("");
 
   const signup = async (e) => {
-    e.preventDefault(); // Prevent page refresh
+    e.preventDefault(); 
     const user = { firstName, lastName, email, username, password };
 
     try {
       const result = await axios.post("/api/users/register", user);
       console.log(result.data);
       setSuccess("Signup successful!");
-      setError(""); // Clear any previous errors
+      setError(""); 
     } catch (error) {
       console.error(error);
       setError("Signup failed. Please try again.");
-      setSuccess(""); // Clear any previous successes
+      setSuccess(""); 
     }
   };
 

@@ -9,12 +9,13 @@ import Approved from "../components/Approved";
 import Rejected from "../components/Rejected";
 import Pending from "../components/pending";
 import Expired from "../components/Expired";
+
 function MyBookUser() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [status, setStatus] = useState("");
+
   useEffect(() => {
     const fetchBookings = async () => {
       try {
@@ -32,7 +33,7 @@ function MyBookUser() {
     };
 
     fetchBookings();
-  }, [user._id]); // Dependency array ensures fetch runs only when user._id changes.
+  }, [user._id]);
 
   return (
     <>
@@ -40,7 +41,7 @@ function MyBookUser() {
         <nav className="h-screen w-[25%]">
           <NavbarUser />
         </nav>
-        <div className="h-screen w-full flex flex-col items-center">
+        <div className="h-auto bg-anotherGrey w-full flex flex-col items-center">
           <Topnav />
           <div className="flex flex-col justify-center items-center w-full h-auto p-4">
             <div className="w-[90%] h-full flex flex-col items-center justify-center mt-10  py-3 rounded-2xl">
@@ -73,14 +74,13 @@ function MyBookUser() {
                           );
                         } else if (booking.status === "rejected") {
                           return (
-                            <div className="w-1/2 h-full flex justify-center items-center bg-red-800">
+                            <div className="w-1/4 h-full flex justify-center items-center bg-red-800">
                               <Rejected />
-                              {/* Assuming Rejected is a valid component */}
                             </div>
                           );
                         } else if (booking.status === "pending") {
                           return (
-                            <div className="w-1/2 h-full flex justify-center items-center bg-yellow-400">
+                            <div className="w-1/4 h-full flex justify-center items-center bg-yellow-400">
                               <Pending />
                             </div>
                           );

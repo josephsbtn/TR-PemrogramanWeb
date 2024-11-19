@@ -11,31 +11,43 @@ import Rejected from "../components/Rejected";
 import Approved from "../components/Approved";
 
 function UserHome() {
-  const user = JSON.parse(localStorage.getItem("currentUser"));
+  const user = JSON.parse(localStorage.getItem("currentUser")) || {};
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [roomBooked, setRoomBooked] = useState([]);
   const [rooms, setRooms] = useState([]);
   const [randomRooms, setRandomRooms] = useState([]);
   const [bookings, setBookings] = useState([]);
-  const [status, setStatus] = useState("");
 
   useEffect(() => {
     const fetchBookings = async () => {
+      if (!user._id) {
+        console.error("User not logged in or user ID missing.");
+        return;
+      }
+
       try {
         setLoading(true);
-        const response = (
-          await axios.get(`/api/bookings/getUserBookings`, {
-            params: { userid: user._id },
-          })
-        ).data;
-        console.log("Bookings:", response);
-        setBookings(response);
+        const response = await axios.get(`/api/bookings/getUserBookings`, {
+          params: { userid: user._id },
+        });
+
+        console.log("Full Bookings Response Data:", response.data); // Debug API response
+        setBookings(response.data); // Update state with bookings array
+
+        // Log each booking's user ID
+        response.data.forEach((booking, index) => {
+          console.log(
+            `Booking ${index + 1} User ID:`,
+            booking.userid?._id || "No User ID"
+          );
+        });
+
         setLoading(false);
       } catch (error) {
         setError(true);
-        console.error("Error fetching bookings:", error.message, error.config);
-        setBookings([]); // Set to an empty array on error
+        console.error("Error fetching bookings:", error.message);
+        setBookings([]); // Reset bookings on error
         setLoading(false);
       }
     };
@@ -59,9 +71,9 @@ function UserHome() {
         time: requestTime,
       });
 
+      setRoomBooked(data);
       setLoading(false);
       console.log("Booked room IDs:", data);
-      setRoomBooked(data);
     } catch (error) {
       setError(true);
       console.error("Error fetching available rooms:", error);
@@ -71,27 +83,26 @@ function UserHome() {
 
   useEffect(() => {
     fetchAvailableRooms();
-  }, [rooms._id]);
+  }, []);
 
   useEffect(() => {
     const fetchRooms = async () => {
       try {
         setLoading(true);
-        const data = (await axios.get("/api/rooms/getallrooms")).data;
-        console.log("data :", data);
+        const response = await axios.get("/api/rooms/getallrooms");
+        const data = response.data;
+        console.log("Rooms:", data);
         setRooms(data);
-
         selectRandomRooms(data);
-
         setLoading(false);
       } catch (error) {
         setError(true);
-        console.log(error);
+        console.error("Error fetching rooms:", error);
         setLoading(false);
       }
     };
+
     fetchRooms();
-    return () => {};
   }, []);
 
   const selectRandomRooms = (allRooms) => {
@@ -103,9 +114,19 @@ function UserHome() {
     }
   };
 
+  const approvedCount = bookings.filter(
+    (booking) =>
+      booking.status === "approved" && booking.userid?._id === user._id
+  ).length;
+
+  const rejectedCount = bookings.filter(
+    (booking) =>
+      booking.status === "rejected" && booking.userid?._id === user._id
+  ).length;
+
   return (
     <>
-      <section className="flex h-auto w-full bg-anotherGrey ">
+      <section className="flex h-auto w-full bg-anotherGrey">
         <nav className="h-screen w-[25%]">
           <NavbarUser />
         </nav>
@@ -134,15 +155,8 @@ function UserHome() {
                   <Rejected />
                 </div>
                 <h1 className="text-2xl font-bold text-gray-800 mb-1">
-                  {
-                    bookings.filter(
-                      (booking) =>
-                        booking.status === "rejected" &&
-                        booking.user_id._id === user._id
-                    ).length
-                  }
+                  {rejectedCount}
                 </h1>
-
                 <h1 className="text-base font-medium text-gray-600">
                   Peminjaman Ditolak
                 </h1>
@@ -154,15 +168,8 @@ function UserHome() {
                   <Approved />
                 </div>
                 <h1 className="text-2xl font-bold text-gray-800 mb-1">
-                  {Array.isArray(bookings)
-                    ? bookings.filter(
-                        (booking) =>
-                          booking.status === "approved" &&
-                          booking.userid._id === user._id // Ensure `userid` is matched correctly
-                      ).length
-                    : 0}
+                  {approvedCount}
                 </h1>
-
                 <h1 className="text-base font-medium text-gray-600">
                   Permintaan Disetujui
                 </h1>
@@ -173,21 +180,21 @@ function UserHome() {
           {/* Section to display random rooms */}
           <div className="flex flex-col h-auto w-[90%] justify-center items-center bg-myGrey m-5 rounded-3xl">
             <h1 className="text-left text-xl font-montserrat font-bold text-white p-4 mt-4">
-              Recomended Rooms
+              Recommended Rooms
             </h1>
             {loading ? (
-              <div className="h-auto w-full flex justify-center items-center bg-myGrey ">
+              <div className="h-auto w-full flex justify-center items-center bg-myGrey">
                 <Loading />
               </div>
             ) : error ? (
-              <div className="h-auto w-full flex justify-center items-center bg-myGrey ">
+              <div className="h-auto w-full flex justify-center items-center bg-myGrey">
                 <h1 className="text-center w-full">Error</h1>
               </div>
             ) : (
               <div className="grid grid-cols-4 h-auto p-4 rounded-xl">
-                {randomRooms.map((room, index) => (
+                {randomRooms.map((room) => (
                   <div
-                    key={room.id}
+                    key={room._id}
                     className="bg-white h-fit shadow-md shadow-myGrey rounded-xl w-[90%] mx-auto p-4 hover:scale-110 transition-all duration-200 ease-in-out">
                     <Room room={room} />
                   </div>

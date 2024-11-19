@@ -43,8 +43,8 @@ function Room({ room }) {
     setDate(initialDate);
     setTime(initialTime);
 
-    fetchAvailableRooms(); // Fetch available rooms with the current date and time
-  }, [room._id]); // Re-run when room._id changes
+    fetchAvailableRooms(); 
+  }, [room._id]); 
 
   return (
     <>
