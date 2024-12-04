@@ -76,6 +76,7 @@ function EditRoom() {
         data: { roomid },
       });
       setSuccess(true);
+      window.location.href = "/roomlist";
       setLoading(false);
     } catch (error) {
       console.error("Error deleting room:", error);
@@ -105,8 +106,9 @@ function EditRoom() {
         ...updatedRoom,
         roomid,
       });
-      setLoading(false);
       setSuccess(true);
+      window.location.href = "/roomlist";
+      setLoading(false);
     } catch (error) {
       setError(
         error.response?.data?.message ||
@@ -118,7 +120,9 @@ function EditRoom() {
   return (
     <>
       {loading ? (
-        <Loading />
+        <div className="flex h-screen w-full items-center justify-center">
+          <Loading />
+        </div>
       ) : (
         <sectiosn className="h-screen w-full flex flex-col bg-anotherGrey">
           <Topnav />

@@ -68,7 +68,7 @@ function Addroom() {
       setCapacity("");
       setDescription("");
       setRoomType("");
-      setImage("");
+      setImage  ("");
       window.location.href = "/roomlist";
     } catch (error) {
       if (error.response && error.response.data) {

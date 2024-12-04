@@ -31,7 +31,7 @@ function RoomList() {
 
   return (
     <>
-      <section className="flex justify-between h-auto w-full bg-anotherGrey ">
+      <section className="flex justify-between h-auto w-full bg-white ">
         <nav className="h-screen w-[25%]">
           <Navbar />
         </nav>
